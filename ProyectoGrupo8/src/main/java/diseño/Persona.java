@@ -26,7 +26,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", ciudad=" + ciudad + ", email=" + email + '}';
+        return "Persona{" + "nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", ciudad=" + ciudad.toString() + ", email=" + email + '}';
     }
 
     public String getNombre() {

@@ -10,19 +10,22 @@ package diseño;
  * @author Beatriz Quizhpi
  */
 public class Ciudad {
-    private String nombre; 
+
+    private String nombre;
     private String provincia;
     private int codigo;
     private static int codigoFinal;
-    public Ciudad(String nombre){
-        this.nombre= nombre; 
+
+    public Ciudad(String nombre) {
+        this.nombre = nombre;
     }
+
     public Ciudad(String nombre, String provincia) {
         this.nombre = nombre;
         this.provincia = provincia;
     }
-    
-    public int generarCodigo(){
+
+    public int generarCodigo() {
         return codigoFinal++;
     }
 
@@ -41,9 +44,12 @@ public class Ciudad {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
-    public void setCodigo(int codigo){
+
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
+
     
-    
+
 }
