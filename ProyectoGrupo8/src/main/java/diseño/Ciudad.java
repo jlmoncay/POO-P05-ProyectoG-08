@@ -11,8 +11,9 @@ package diseño;
  */
 public class Ciudad {
     private String nombre; 
-    private String provincia; 
-
+    private String provincia;
+    private int codigo;
+    private static int codigoFinal;
     public Ciudad(String nombre){
         this.nombre= nombre; 
     }
@@ -20,7 +21,10 @@ public class Ciudad {
         this.nombre = nombre;
         this.provincia = provincia;
     }
-
+    
+    public int generarCodigo(){
+        return codigoFinal++;
+    }
 
     public String getNombre() {
         return nombre;
@@ -36,6 +40,9 @@ public class Ciudad {
 
     public void setProvincia(String provincia) {
         this.provincia = provincia;
+    }
+    public void setCodigo(int codigo){
+        this.codigo = codigo;
     }
     
     
