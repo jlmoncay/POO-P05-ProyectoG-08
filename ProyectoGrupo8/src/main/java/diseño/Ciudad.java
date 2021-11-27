@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package diseño;
-
+import java.util.ArrayList;
 /**
  *
  * @author Beatriz Quizhpi
@@ -15,6 +15,7 @@ public class Ciudad {
     private String provincia;
     private int codigo;
     private static int codigoFinal;
+    
 
     public Ciudad(String nombre) {
         this.nombre = nombre;
@@ -24,9 +25,20 @@ public class Ciudad {
         this.nombre = nombre;
         this.provincia = provincia;
     }
-
+    
     public int generarCodigo() {
-        return codigoFinal++;
+        return ++codigoFinal;
+    }
+    
+    public static void mostrarCiudades(ArrayList<Ciudad> ciudades){
+        System.out.println("Ciudades: "+ciudades);
+    }
+    
+    public void registrarCiudad(ArrayList<Ciudad>ciudades, Ciudad c){
+        int id = c.generarCodigo();
+        c.setCodigo(id);
+        c.toString();
+        ciudades.add(c); 
     }
 
     public String getNombre() {
@@ -48,6 +60,12 @@ public class Ciudad {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
+    public static void setCodigoFinal(int codigoFinal) {
+        Ciudad.codigoFinal = codigoFinal;
+    }
+    
+    
 
     @Override
     public String toString() {

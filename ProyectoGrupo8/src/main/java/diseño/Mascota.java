@@ -34,7 +34,7 @@ public class Mascota {
     }
     
     public int generarIdMascota(){
-        return idFinal++;
+        return ++idFinal;
     }
     
     public void registrarMascota(ArrayList<Mascota >mascotas, Mascota masc){

@@ -31,6 +31,7 @@ public class Sistema {
         // TODO code application logic here
         dueñoss= new ArrayList<>(); 
         mascotas = new ArrayList<>();
+        Mascota.setIdFinal(mascotas.size());
         Scanner sc = new Scanner(System.in);
         int n;
 
