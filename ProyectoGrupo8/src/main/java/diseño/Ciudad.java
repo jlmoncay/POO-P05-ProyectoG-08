@@ -49,7 +49,10 @@ public class Ciudad {
         this.codigo = codigo;
     }
 
-
+    @Override
+    public String toString() {
+        return nombre;
+    }
     
 
 }
