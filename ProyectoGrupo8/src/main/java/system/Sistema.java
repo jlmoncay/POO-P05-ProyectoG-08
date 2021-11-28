@@ -45,8 +45,35 @@ public class Sistema {
             n = sc.nextInt();
             sc.nextLine();
             if (n == 1) {
-                Concurso.mostrarConcusos(concursos);
-                Concurso.adminConcursos();
+                System.out.print("Los concursos existentes son: " + concursos);
+                System.out.print("1. Crear concurso"
+                + "2. Inscribir participante"
+                + "3. Regresar al menú principal"
+                + "Ingrese una opción: ");
+        
+        //Scanner sc = new Scanner(System.in);
+        int opcion = sc.nextInt();
+        
+
+        switch (opcion) {
+            case 1:
+                System.out.println("En caso 1");
+                System.out.println("Ingrese los datos del concurso:");
+
+                break;
+
+            case 2:
+                System.out.println("En caso 2");
+
+                break;
+
+            case 3:
+                System.out.println("Bienvenido al menú principal");
+                break;
+            
+            default:
+                System.out.println("Ingrese una opción válida");
+        }
 
             } else if (n == 2) {
                 Dueño.mostrarDueños(dueñoss);
