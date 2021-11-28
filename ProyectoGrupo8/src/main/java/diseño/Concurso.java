@@ -5,6 +5,7 @@
  */
 package diseño;
 
+import person.Auspiciante;
 import java.time.LocalDateTime;
 import java.util.List;
 

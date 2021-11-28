@@ -5,6 +5,8 @@
  */
 package diseño;
 
+import person.Auspiciante;
+
 /**
  *
  * @author Jorge Moncayo Paz

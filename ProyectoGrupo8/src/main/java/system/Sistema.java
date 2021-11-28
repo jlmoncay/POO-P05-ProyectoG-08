@@ -6,8 +6,8 @@
 package system;
 
 import diseño.Ciudad;
-import diseño.Dueño;
-import diseño.Persona;
+import person.Dueño;
+import person.Persona;
 import diseño.Mascota;
 import diseño.TipoMascota;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class Sistema {
                         break;
 
                     case 3:
-                        System.out.println("En caso 3");
+                        System.out.println("Bienvenido al menú principal");
                         break;
 
                 }
@@ -101,7 +101,7 @@ public class Sistema {
 
                         break;
                     case 3:
-                        System.out.println("En caso 3d");
+                        System.out.println("Bienvenido al menú principal");
                         break;
 
                 }
@@ -175,7 +175,7 @@ public class Sistema {
 
                         break;
                     case 3:
-                        System.out.println("En caso 3d");
+                        System.out.println("Bienvenido al menú principal");
                         break;
 
                 }

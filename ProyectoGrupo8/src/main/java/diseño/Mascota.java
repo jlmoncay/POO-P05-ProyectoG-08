@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package diseño;
+import person.Dueño;
 import java.time.LocalDate;
 import java.util.ArrayList;
 /**
