@@ -34,7 +34,7 @@ public class Ciudad {
         System.out.println("Ciudades: "+ciudades);
     }
     
-    public void registrarCiudad(ArrayList<Ciudad>ciudades, Ciudad c){
+    public static void registrarCiudad(ArrayList<Ciudad> ciudades, Ciudad c){
         int id = c.generarCodigo();
         c.setCodigo(id);
         c.toString();

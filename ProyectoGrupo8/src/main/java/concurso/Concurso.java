@@ -8,6 +8,7 @@ package concurso;
 import diseño.TipoConcursante;
 import person.Auspiciante;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,13 +25,13 @@ public class Concurso {
     private LocalDateTime fechaCierreIns;
     private Ciudad ciudad;
     private String lugar;
-    private List<Premio> premios;
-    private List<Auspiciante> auspiciantes;
+    //private List<Premio> premios;
+    //private List<Auspiciante> auspiciantes;
     private TipoConcursante dirigido;
     private int codigo;
     private int idFinal;
 
-    public Concurso(String nombre, LocalDateTime fechaEvento, LocalDateTime horaEvento, LocalDateTime fechaInicioIns, LocalDateTime fechaCierreIns, Ciudad ciudad, String lugar, List<Premio> premios, List<Auspiciante> auspiciantes, TipoConcursante dirigido, int codigo, int idFinal) {
+    public Concurso(String nombre, LocalDateTime fechaEvento, LocalDateTime horaEvento, LocalDateTime fechaInicioIns, LocalDateTime fechaCierreIns, Ciudad ciudad, String lugar, /*List<Premio> premios, List<Auspiciante> auspiciantes,*/ TipoConcursante dirigido, int codigo, int idFinal) {
         this.nombre = nombre;
         this.fechaEvento = fechaEvento;
         this.horaEvento = horaEvento;
@@ -38,8 +39,8 @@ public class Concurso {
         this.fechaCierreIns = fechaCierreIns;
         this.ciudad = ciudad;
         this.lugar = lugar;
-        this.premios = premios;
-        this.auspiciantes = auspiciantes;
+        //this.premios = premios;
+        //this.auspiciantes = auspiciantes;
         this.dirigido = dirigido;
         this.codigo = codigo;
         this.idFinal = idFinal;
@@ -106,13 +107,13 @@ public class Concurso {
         this.lugar = lugar;
     }
 
-    public List<Premio> getPremios() {
+    /*public List<Premio> getPremios() {
         return premios;
     }
 
     public List<Auspiciante> getAuspiciantes() {
         return auspiciantes;
-    }
+    }*/
 
     public TipoConcursante getDirigido() {
         return dirigido;
@@ -145,6 +146,7 @@ public class Concurso {
     }
 
     public static void adminConcursos() {
+        
         int opcion = menuAdminConcursos();
 
         switch (opcion) {
@@ -183,7 +185,33 @@ public class Concurso {
             sc.nextLine();
         } while ((opcion < 1) || (opcion > 3));
 
-        return opcion;
+        sc.close();
+        
+        return opcion;  
     }
+    
+    public void crearConcurso(ArrayList<Concurso> concursos){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("A continuación ingresará los datos del concurso.");
+        System.out.print("Ingrese el nombre del concurso: ");
+        String nombre = sc.nextLine();
+        System.out.print("Ingrese la fecha en la que se realizará el evento (dd/mm/yyyy): "); 
+        String fechaEvento = sc.nextLine();
+        System.out.println("Ingrese la hora en la que se realizará el evento (hh:mm:ss): ");
+        String horaEvento = sc.nextLine();
+        System.out.println("Ingrese la fecha de inicio de las inscripciones (dd/mm/yyyy): ");
+        String fechaInicioIns = sc.nextLine();
+        System.out.println("Ingrese la fecha de cierre de las inscripciones (dd/mm/yyyy): ");
+        String fechaCierreIns = sc.nextLine();
+        System.out.println("Ingrese el nombre de la ciudad donde se realizará el concurso: ");
+        String nombreCiudad = sc.nextLine();
+        System.out.println("Ingrese el lugar donde se realizará el concurso: ");
+        String lugar = sc.nextLine();
+        
+        
+        
+        sc.close();
+    }
+    
 
 }

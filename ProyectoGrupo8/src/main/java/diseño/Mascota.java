@@ -15,16 +15,16 @@ public class Mascota {
     private String nombre;
     private TipoMascota tipo;
     private String raza;
-    private LocalDate fechaInicio;
+    private LocalDate fechaNacimiento;
     private int idMascota;
     private static int idFinal;
     private Dueño dueño;
 
-    public Mascota(String nombre, TipoMascota tipo, String raza, LocalDate fechaInicio,Dueño dueño) {
+    public Mascota(String nombre, TipoMascota tipo, String raza, LocalDate fechaNacimiento, Dueño dueño) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.raza = raza;
-        this.fechaInicio = fechaInicio;
+        this.fechaNacimiento = fechaNacimiento;
         this.dueño = dueño;
     }
     
@@ -58,8 +58,8 @@ public class Mascota {
         return raza;
     }
 
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
     public int getIdMascota() {
@@ -93,8 +93,8 @@ public class Mascota {
         this.raza = raza;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public void setIdMascota(int idMascota) {
@@ -108,7 +108,7 @@ public class Mascota {
     }
     @Override
     public String toString() {
-        return "Mascota{" + "nombre =" + nombre + ", tipo =" + tipo + ", raza =" + raza + ", fecha inscripcion =" + fechaInicio + ", id =" + idMascota + ", dueño =" + dueño + '}';
+        return "Mascota{" + "nombre =" + nombre + ", tipo =" + tipo + ", raza =" + raza + ", fecha nacimiento =" + fechaNacimiento + ", id =" + idMascota + ", dueño =" + dueño + '}';
         
     }
     
