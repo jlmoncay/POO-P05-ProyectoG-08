@@ -9,13 +9,14 @@ import diseño.TipoConcursante;
 import person.Auspiciante;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
  * @author Jorge Moncayo Paz
  */
 public class Concurso {
-    
+
     private String nombre;
     private LocalDateTime fechaEvento;
     private LocalDateTime horaEvento;
@@ -43,9 +44,9 @@ public class Concurso {
         this.codigo = codigo;
         this.idFinal = idFinal;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Nombre: " + nombre + " | " + "Fecha del evento: " + fechaEvento + " | " + "Hora del evento: " + horaEvento + " | " + "Fecha de inicio de las inscripciones: " + fechaInicioIns + " | " + "Fecha de cierre de las inscripciones: " + fechaCierreIns + " | " + "Ciudad: " + ciudad + " | " + "Lugar: " + lugar + " | " + "Dirigido a: " + dirigido + " | " + "Código: " + codigo + " | " + "ID final: " + idFinal;
     }
 
@@ -136,12 +137,36 @@ public class Concurso {
     public void setIdFinal(int idFinal) {
         this.idFinal = idFinal;
     }
-    
-    public static void mostrarConcusos(List<Concurso> concursos){
-        System.out.println("Los concucsos son:");
-        for(Concurso c : concursos){
-            System.out.println(c);
-        }
+
+    public static void mostrarConcusos(List<Concurso> concursos) {
+        System.out.println("Los concursos existentes son: " + concursos);
+
     }
     
+    public static void adminConcursos() {
+        Scanner sc = new Scanner(System.in);
+        
+
+        System.out.println("1.Crear concursos\n" + "2.Inscribir participante\n" + "3.Regresar al menú principal\n");
+        int b = sc.nextInt();
+        switch (b) {
+            case 1:
+                System.out.println("En caso 1");
+                System.out.println("Ingrese los datos del concurso:");
+
+                break;
+
+            case 2:
+                System.out.println("En caso 2");
+
+                break;
+
+            case 3:
+                System.out.println("Bienvenido al menú principal");
+                break;
+        }
+
+    }
+    
+
 }

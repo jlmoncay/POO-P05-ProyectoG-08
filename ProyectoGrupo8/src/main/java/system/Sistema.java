@@ -6,6 +6,7 @@
 package system;
 
 import concurso.Ciudad;
+import concurso.Concurso;
 import person.Dueño;
 import person.Persona;
 import diseño.Mascota;
@@ -26,11 +27,13 @@ public class Sistema {
      */
     private static ArrayList<Dueño> dueñoss;
     private static ArrayList<Mascota> mascotas;
+    private static ArrayList<Concurso> concursos;
 
     public static void main(String[] args) {
         // TODO code application logic here
-        dueñoss= new ArrayList<>(); 
+        dueñoss = new ArrayList<>();
         mascotas = new ArrayList<>();
+        concursos = new ArrayList<>();
         Mascota.setIdFinal(mascotas.size());
         Scanner sc = new Scanner(System.in);
         int n;
@@ -38,27 +41,12 @@ public class Sistema {
         do {
             System.out.println("Bienvenidos al Sistema");
             System.out.println("1.Administrar Concursos\n" + "2.Administar Dueños\n" + "3.Administar Mascotas\n" + "4.Salir");
+            System.out.println("Ingrese una opción: ");
             n = sc.nextInt();
             sc.nextLine();
             if (n == 1) {
-                System.out.println("1.Crear concursos\n" + "2.Inscribir participante\n" + "3.Regresar al menú principal\n");
-                int b = sc.nextInt();
-                switch (b) {
-                    case 1:
-                        System.out.println("En caso 1");
-
-                        break;
-
-                    case 2:
-                        System.out.println("En caso 2");
-
-                        break;
-
-                    case 3:
-                        System.out.println("Bienvenido al menú principal");
-                        break;
-
-                }
+                Concurso.mostrarConcusos(concursos);
+                Concurso.adminConcursos();
 
             } else if (n == 2) {
                 Dueño.mostrarDueños(dueñoss);
@@ -181,12 +169,20 @@ public class Sistema {
                 }
             }
 
-        } while (n != 4);
-        System.out.println("Adiós");
+        } while (n!= 4);
+            System.out.println("Adiós");
+
+        sc.close();
 
     }
-
+    
+   
+    
 }
+    
+    
 
+    
 
+    
 
