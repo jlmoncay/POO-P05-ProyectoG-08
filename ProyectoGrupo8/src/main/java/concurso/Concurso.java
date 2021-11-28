@@ -140,21 +140,12 @@ public class Concurso {
 
     public static void mostrarConcusos(List<Concurso> concursos) {
         System.out.print("\n-- Bienvenido al menú de Administrar Concursos --\n");
-        System.out.print("Los concursos existentes son: " + concursos);
+        System.out.println("Los concursos existentes son: " + concursos);
 
     }
 
     public static void adminConcursos() {
-        
-
-        System.out.print("1. Crear concurso"
-                + "2. Inscribir participante"
-                + "3. Regresar al menú principal"
-                + "Ingrese una opción: ");
-        
-        Scanner sc = new Scanner(System.in);
-        int opcion = sc.nextInt();
-        
+        int opcion = menuAdminConcursos();
 
         switch (opcion) {
             case 1:
@@ -169,7 +160,7 @@ public class Concurso {
                 break;
 
             case 3:
-                System.out.println("Bienvenido al menú principal");
+                //System.out.println("Bienvenido al menú principal");
                 break;
             
             default:
@@ -178,20 +169,21 @@ public class Concurso {
 
     }
 
-    /*public static int menuAdminConcursos() {
+    public static int menuAdminConcursos() {
         Scanner sc = new Scanner(System.in);
         int opcion;
 
         do {
-            System.out.print("1. Crear concurso"
-                    + "2. Inscribir participante"
-                    + "3. Regresar al menú principal"
-                    + "Ingrese una opción: ");
+            System.out.print("\n1. Crear concurso\n"
+                    + "2. Inscribir participante\n"
+                    + "3. Regresar al menú principal\n");
+      
+            System.out.println("Ingrese una opción: ");
             opcion = sc.nextInt();
             sc.nextLine();
         } while ((opcion < 1) || (opcion > 3));
 
         return opcion;
-    }*/
+    }
 
 }

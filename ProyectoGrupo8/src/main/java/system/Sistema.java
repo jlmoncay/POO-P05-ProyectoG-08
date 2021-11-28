@@ -39,41 +39,16 @@ public class Sistema {
         int n;
 
         do {
-            System.out.println("Bienvenidos al Sistema");
+            System.out.println("\nBienvenidos al Sistema");
             System.out.println("1.Administrar Concursos\n" + "2.Administar Dueños\n" + "3.Administar Mascotas\n" + "4.Salir");
             System.out.println("Ingrese una opción: ");
             n = sc.nextInt();
             sc.nextLine();
-            if (n == 1) {
-                System.out.print("Los concursos existentes son: " + concursos);
-                System.out.print("1. Crear concurso"
-                + "2. Inscribir participante"
-                + "3. Regresar al menú principal"
-                + "Ingrese una opción: ");
-        
-        //Scanner sc = new Scanner(System.in);
-        int opcion = sc.nextInt();
-        
-
-        switch (opcion) {
-            case 1:
-                System.out.println("En caso 1");
-                System.out.println("Ingrese los datos del concurso:");
-
-                break;
-
-            case 2:
-                System.out.println("En caso 2");
-
-                break;
-
-            case 3:
-                System.out.println("Bienvenido al menú principal");
-                break;
             
-            default:
-                System.out.println("Ingrese una opción válida");
-        }
+            if (n == 1) {
+                
+                Concurso.mostrarConcusos(concursos);
+                Concurso.adminConcursos();
 
             } else if (n == 2) {
                 Dueño.mostrarDueños(dueñoss);
