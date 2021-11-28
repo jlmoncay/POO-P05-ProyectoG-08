@@ -5,7 +5,7 @@
  */
 package system;
 
-import diseño.Ciudad;
+import concurso.Ciudad;
 import person.Dueño;
 import person.Persona;
 import diseño.Mascota;

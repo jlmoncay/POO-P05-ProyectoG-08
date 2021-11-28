@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package diseño;
+package concurso;
 
+import diseño.TipoConcursante;
 import person.Auspiciante;
 import java.time.LocalDateTime;
 import java.util.List;

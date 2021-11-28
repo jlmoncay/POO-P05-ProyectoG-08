@@ -5,7 +5,7 @@
  */
 package person;
 
-import diseño.Ciudad;
+import concurso.Ciudad;
 
 /**
  *

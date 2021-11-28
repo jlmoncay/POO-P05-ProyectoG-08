@@ -5,7 +5,7 @@
  */
 package person;
 
-import diseño.Ciudad;
+import concurso.Ciudad;
 import person.Persona;
 import java.util.ArrayList;
 import java.util.Scanner;
