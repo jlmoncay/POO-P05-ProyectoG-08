@@ -316,7 +316,7 @@ public class Sistema {
             int indiceMasc = 0;
             for (Mascota m : mascotas) {
                 if (m.getIdMascota() == codigoMasc) {
-                    indiceMasc = m.getIdMascota();
+                    indiceMasc = mascotas.indexOf(m);
                 }
             }
             
