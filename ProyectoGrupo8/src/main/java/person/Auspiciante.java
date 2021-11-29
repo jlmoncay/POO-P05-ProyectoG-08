@@ -14,24 +14,30 @@ import person.Persona;
  * @author USER
  */
 public class Auspiciante extends Persona {
+    // variables de instancia
     private String paginaWeb; 
     private int codigoAuspiciante;
     private static int idFinal;
+    
+    // contructor
     
     public Auspiciante(String nombre, String direccion, String telefono, Ciudad ciudad, String email,String paginaWeb){ 
         super(nombre, direccion, telefono, ciudad, email);
         this.paginaWeb= paginaWeb; 
         
     }
+    // método que retor un int, este genera el codigo luego de aumentar  la variable id final 
     
     public int generarCodigo() {
         return ++idFinal;
     }
     
+    //  Método que registra un auspiciante y llama al método generar codigo y es añadido al arrayList de auspiciantes. 
     public static void registrarAuspiciante(ArrayList<Auspiciante> auspiciantes, Auspiciante a) {
         a.setCodigoAuspiciante(a.generarCodigo());
         auspiciantes.add(a);
     }
+    // getters y setters
 
     public String getPaginaWeb() {
         return paginaWeb;
@@ -52,5 +58,11 @@ public class Auspiciante extends Persona {
     public void setCodigoAuspiciante(int codigoAuspiciante) {
         this.codigoAuspiciante = codigoAuspiciante;
     }
+// Método to string que muestra la información de un  objeto auspiciante
+    @Override
+    public String toString() {
+        return "Auspiciante{" + "paginaWeb=" + paginaWeb + ", codigoAuspiciante=" + codigoAuspiciante + '}';
+    }
+    
     
 }

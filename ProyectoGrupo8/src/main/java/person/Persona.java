@@ -12,11 +12,14 @@ import concurso.Ciudad;
  * @author Beatriz Quizhpi
  */
 public class Persona {
+    
+    // variables de instancia
     private String nombre; 
     private String direccion; 
     private String telefono; 
     private Ciudad ciudad; 
     private String email; 
+    // constructor
 
     public Persona(String nombre, String direccion, String telefono, Ciudad ciudad, String email) {
         this.nombre = nombre;
@@ -26,11 +29,12 @@ public class Persona {
         this.email = email;
     }
 
+    // Método to string que muestra la información del objeto de la clase persona
     @Override
     public String toString() {
         return "Persona{" + "nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", ciudad=" + ciudad.toString() + ", email=" + email + '}';
     }
-
+// getters y setters
     public String getNombre() {
         return nombre;
     }
