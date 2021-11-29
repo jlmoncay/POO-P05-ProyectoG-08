@@ -242,7 +242,7 @@ public class Sistema {
         String fechaInicioIns = sc.nextLine();
         System.out.println("Ingrese la fecha de cierre de las inscripciones (dd/mm/yyyy): ");
         String fechaCierreIns = sc.nextLine();
-        System.out.println("Ingrese el nombre de la ciudad donde se realizará el concurso: ");
+        System.out.println("Ingrese el nombre de la ciudad donde se realizará el concurso (Guayaquil - Quito - Cuenca): ");
         String nombreCiudad = sc.nextLine();
         Ciudad ciudad = null;
         for (Ciudad c : ciudades) {
@@ -287,42 +287,70 @@ public class Sistema {
         Scanner sc = new Scanner(System.in);
         System.out.println("\n-- Inscribir participante al concurso --");
         System.out.println("Los concursos que se encuentran vigentes son: ");
+        String continuar = "";
         for (Concurso c : concursos) {
             if (c.getEstado().equals(EstadoConcurso.VIGENTE)) {
                 System.out.println(c);
+                continuar = "S";
             } else {
                 System.out.println("Por el momento no hay concursos vigentes.");
             }
         }
-        
-        System.out.println("Ingrese el código del concurso donde desea inscribir a su mascota: ");
-        int codigoConcur = sc.nextInt();
-        sc.nextLine();
-        System.out.println("La lista de mascotas es la siguiente: ");
-        for (Mascota m : mascotas) {
-            System.out.println(m);
-        }
-        System.out.println("Ingrese el id de la mascota a inscribir: ");
-        int codigoMasc = sc.nextInt();
-        sc.nextLine();
-        
-        int indiceConcur = 0;
-        for (Concurso c : concursos){
-            if (c.getCodigo() == codigoConcur) {
-                indiceConcur = c.getCodigo();
+        if (continuar.toLowerCase().equals("s")) {
+            System.out.println("Ingrese el código del concurso donde desea inscribir a su mascota: ");
+            int codigoConcur = sc.nextInt();
+            sc.nextLine();
+            Concurso concur = null;
+            for (Concurso c : concursos) {
+                if (c.getCodigo() == codigoConcur) {
+                    concur = c;
+                }
             }
-        }
-        
-        int indiceMasc = 0;
-        for (Mascota m : mascotas) {
-            if (m.getIdMascota() == codigoMasc) {
-                indiceMasc = m.getIdMascota();
+            switch (concur.getDirigido()) {
+                case PERRO:
+                    System.out.println("La lista de mascotas es la siguiente: ");
+                    for (Mascota m : mascotas) {
+                        if (m.getTipo().equals(TipoMascota.PERRO)) {
+                            System.out.println(m);
+                        }
+
+                    }
+                    break;
+
+                case GATO:
+                    System.out.println("La lista de mascotas es la siguiente: ");
+                    for (Mascota m : mascotas) {
+                        if (m.getTipo().equals(TipoMascota.GATO)) {
+                            System.out.println(m);
+                        }
+
+                    }
+                    break;
+                    
+                default:
+                    System.out.println("La lista de mascotas es la siguiente: ");
+                    for (Mascota m : mascotas) {
+                        System.out.println(m);
+                    }
             }
+            System.out.println("Ingrese el id de la mascota a inscribir: ");
+            int codigoMasc = sc.nextInt();
+            sc.nextLine();
+
+            int indiceMasc = 0;
+            for (Mascota m : mascotas) {
+                if (m.getIdMascota() == codigoMasc) {
+                    indiceMasc = m.getIdMascota();
+                }
+            }
+            
+            concur.getMascotas().add(mascotas.get(indiceMasc));
+            mascotasParticiparon.add(mascotas.get(indiceMasc));
+            System.out.println("\nLa mascota ha sido inscrita exitosamente.");
+            
+        } else {
+            System.out.println("Primero registre un concurso vigente.");
         }
-        
-        concursos.get(indiceConcur).getMascotas().add(mascotas.get(indiceMasc));
-        mascotasParticiparon.add(mascotas.get(indiceMasc));
-        System.out.println("\nLa mascota ha sigo inscrita exitosamente.");        
     }
     
     
