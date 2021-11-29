@@ -15,8 +15,7 @@ import person.Persona;
 public class Auspiciante extends Persona {
     private String paginaWeb; 
     
-    public Auspiciante( String nombre, String direccion, String telefono, Ciudad ciudad, String email,String paginaWeb){
-        
+    public Auspiciante(String nombre, String direccion, String telefono, Ciudad ciudad, String email,String paginaWeb){ 
         super(nombre, direccion, telefono, ciudad, email);
         this.paginaWeb= paginaWeb; 
         

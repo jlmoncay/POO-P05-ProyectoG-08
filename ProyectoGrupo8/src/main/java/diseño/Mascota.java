@@ -38,7 +38,7 @@ public class Mascota {
         return ++idFinal;
     }
     
-    public void registrarMascota(ArrayList<Mascota >mascotas, Mascota masc){
+    public static void registrarMascota(ArrayList<Mascota >mascotas, Mascota masc){
         int id = masc.generarIdMascota();
         masc.setIdMascota(id);
         masc.toString();

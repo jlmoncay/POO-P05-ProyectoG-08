@@ -7,10 +7,12 @@ package system;
 
 import concurso.Ciudad;
 import concurso.Concurso;
+import concurso.EstadoConcurso;
 import concurso.Premio;
 import person.Dueño;
 import person.Persona;
 import diseño.Mascota;
+import diseño.TipoConcursante;
 import diseño.TipoMascota;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -53,7 +55,7 @@ public class Sistema {
             if (n == 1) {
 
                 Concurso.mostrarConcusos(concursos);
-                Concurso.adminConcursos();
+                adminConcursos();
 
             } else if (n == 2) {
                 Dueño.mostrarDueños(dueñoss);
@@ -182,7 +184,103 @@ public class Sistema {
         sc.close();
 
     }
+    
+    public static void adminConcursos() {
+        
+        int opcion = menuAdminConcursos();
 
+        switch (opcion) {
+            case 1:
+                crearConcurso();
+               
+                break;
+
+            case 2:
+                System.out.println("En caso 2");
+
+                break;
+
+            case 3:
+                //System.out.println("Bienvenido al menú principal");
+                break;
+            
+            default:
+                System.out.println("Ingrese una opción válida");
+        }
+
+    }
+    
+    public static int menuAdminConcursos() {
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+
+        do {
+            System.out.print("\n1. Crear concurso\n"
+                    + "2. Inscribir participante\n"
+                    + "3. Regresar al menú principal\n");
+      
+            System.out.println("Ingrese una opción: ");
+            opcion = sc.nextInt();
+            sc.nextLine();
+        } while ((opcion < 1) || (opcion > 3));
+
+        sc.close();
+        
+        return opcion;  
+    }
+    
+    public static void crearConcurso() {
+        Scanner sc = new Scanner(System.in);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+        System.out.println("-- Crear concurso --");
+        System.out.print("Ingrese el nombre del concurso: ");
+        String nombre = sc.nextLine();
+        System.out.print("Ingrese la fecha en la que se realizará el concurso (dd/mm/yyyy): "); 
+        String fechaEvento = sc.nextLine();
+        System.out.println("Ingrese la hora en la que se realizará el concurso (hh:mm:ss): ");
+        String horaEvento = sc.nextLine();
+        System.out.println("Ingrese la fecha de inicio de las inscripciones (dd/mm/yyyy): ");
+        String fechaInicioIns = sc.nextLine();
+        System.out.println("Ingrese la fecha de cierre de las inscripciones (dd/mm/yyyy): ");
+        String fechaCierreIns = sc.nextLine();
+        System.out.println("Ingrese el nombre de la ciudad donde se realizará el concurso: ");
+        String nombreCiudad = sc.nextLine();
+        Ciudad ciudad = null;
+        for (Ciudad c : ciudades) {
+            if (nombreCiudad.toLowerCase().equals(c.getNombre().toLowerCase())) {
+                ciudad = c;
+            }
+        }
+        TipoConcursante tipo;
+        System.out.println("Ingrese el tipo de concursante que participará (GATO - PERRO - AMBOS): ");
+        String tipoConcur = sc.nextLine().toUpperCase();
+        if (tipoConcur.equals(TipoConcursante.AMBOS)) {
+            tipo = TipoConcursante.AMBOS;
+        } else if (tipoConcur.equals(TipoConcursante.GATO)) {
+            tipo = TipoConcursante.GATO;
+        } else {
+            tipo = TipoConcursante.PERRO;
+        }
+        
+        EstadoConcurso estado;
+        System.out.println("Ingrese el estado del concurso (PASADO - VIGENTE): ");
+        String estadoConcur = sc.nextLine().toUpperCase();
+        if (estadoConcur.equals(EstadoConcurso.PASADO)) {
+            estado = EstadoConcurso.PASADO;
+        } else {
+            estado = EstadoConcurso.VIGENTE;
+        }
+        
+        Concurso nuevoConcurso = new Concurso(nombre, LocalDate.parse(fechaEvento, formatter), horaEvento, LocalDate.parse(fechaInicioIns, formatter), LocalDate.parse(fechaCierreIns, formatter), ciudad, premios, auspiciantes, tipo, estado, mascotas);
+        
+        Concurso.registrarConcurso(concursos, nuevoConcurso);
+        
+        sc.close();
+    }
+    
+    
+    
     public static void cargarDatos() {
         //Creación de las 3 ciudades.
         Ciudad ciudad1 = new Ciudad("Guayaquil", "Guayas");
@@ -239,17 +337,17 @@ public class Sistema {
         Mascota masc9 = new Mascota("Tom", TipoMascota.GATO, "Ragdoll", LocalDate.parse("04/04/2007", formatter), dueño9);
         Mascota masc10 = new Mascota("Ruby", TipoMascota.GATO, "Angora", LocalDate.parse("13/06/2021", formatter), dueño10);
         
-        mascotas.add(masc1);
-        mascotas.add(masc2);
-        mascotas.add(masc3);
-        mascotas.add(masc4);
-        mascotas.add(masc5);
-        mascotas.add(masc6);
-        mascotas.add(masc7);
-        mascotas.add(masc8);
-        mascotas.add(masc9);
-        mascotas.add(masc10);
-        
+        Mascota.registrarMascota(mascotas, masc1);
+        Mascota.registrarMascota(mascotas, masc2);
+        Mascota.registrarMascota(mascotas, masc3);
+        Mascota.registrarMascota(mascotas, masc4);
+        Mascota.registrarMascota(mascotas, masc5);
+        Mascota.registrarMascota(mascotas, masc6);
+        Mascota.registrarMascota(mascotas, masc7);
+        Mascota.registrarMascota(mascotas, masc8);
+        Mascota.registrarMascota(mascotas, masc9);
+        Mascota.registrarMascota(mascotas, masc10);
+    
         //Creación de 3 premios.
         Premio premio1 = new Premio(ausp1, "Primer lugar", "$500 y productos Dog Chow");
         Premio premio2 = new Premio(ausp2, "Segundo lugar", "$300 y productos Pro-can");
@@ -259,6 +357,14 @@ public class Sistema {
         premios.add(premio2);
         premios.add(premio3);
         
+       //Creación de un concurso vigente.
+       Concurso concursoVigente1 = new Concurso("Expo Pet 2021", LocalDate.parse("30/11/2021", formatter), "15:00:00", LocalDate.parse("05/11/2021", formatter), LocalDate.parse("10/11/2021", formatter), ciudad1, premios, auspiciantes, TipoConcursante.PERRO, EstadoConcurso.VIGENTE, mascotas);
+       
+       Concurso.registrarConcurso(concursos, concursoVigente1);
+        
     }
+    
+    
+    
 
 }
