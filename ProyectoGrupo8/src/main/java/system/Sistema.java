@@ -41,7 +41,7 @@ public class Sistema {
         /*dueñoss = new ArrayList<>();
         mascotas = new ArrayList<>();
         concursos = new ArrayList<>();*/
-        Mascota.setIdFinal(mascotas.size());
+        
         cargarDatos();
         Scanner sc = new Scanner(System.in);
         int n;
@@ -163,8 +163,6 @@ public class Sistema {
                                 System.out.println("Esa mascota ha sido eliminada");
                                 bool = true;
                                 break;
-                            } else {
-                                bool = false;
                             }
                         }
                         if (bool == false) {
