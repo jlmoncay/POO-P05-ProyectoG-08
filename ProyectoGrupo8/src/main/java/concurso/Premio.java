@@ -5,6 +5,7 @@
  */
 package concurso;
 
+import diseño.Mascota;
 import person.Auspiciante;
 
 /**
@@ -16,11 +17,21 @@ public class Premio {
     private Auspiciante auspiciante;
     private String lugar;
     private String descripcion;
+    private Mascota mascotaGanadora;
 
-    public Premio(Auspiciante auspiciante, String lugar, String descripcion) {
+    public Premio(Auspiciante auspiciante, String lugar, String descripcion, Mascota mascotaGanadora) {
         this.auspiciante = auspiciante;
         this.lugar = lugar;
         this.descripcion = descripcion;
+        this.mascotaGanadora = mascotaGanadora;
+    }
+
+    public Mascota getMascotaGanadora() {
+        return mascotaGanadora;
+    }
+
+    public void setMascotaGanadora(Mascota mascotaGanadora) {
+        this.mascotaGanadora = mascotaGanadora;
     }
 
     public Auspiciante getAuspiciante() {
@@ -49,7 +60,7 @@ public class Premio {
 
     @Override
     public String toString() {
-        return ">> " + lugar + ": " + descripcion + ", " + auspiciante.getNombre();
+        return ">> " + lugar + ": " + descripcion + ", " + auspiciante.getNombre() + ", " + "mascota ganadora: " + mascotaGanadora.getNombre();
     }
 
 }
