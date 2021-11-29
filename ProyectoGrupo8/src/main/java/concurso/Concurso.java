@@ -28,10 +28,11 @@ public class Concurso {
     //private List<Premio> premios;
     //private List<Auspiciante> auspiciantes;
     private TipoConcursante dirigido;
+    private EstadoConcurso estado;
     private int codigo;
     private int idFinal;
 
-    public Concurso(String nombre, LocalDateTime fechaEvento, LocalDateTime horaEvento, LocalDateTime fechaInicioIns, LocalDateTime fechaCierreIns, Ciudad ciudad, String lugar, /*List<Premio> premios, List<Auspiciante> auspiciantes,*/ TipoConcursante dirigido, int codigo, int idFinal) {
+    public Concurso(String nombre, LocalDateTime fechaEvento, LocalDateTime horaEvento, LocalDateTime fechaInicioIns, LocalDateTime fechaCierreIns, Ciudad ciudad, String lugar, /*List<Premio> premios, List<Auspiciante> auspiciantes,*/ TipoConcursante dirigido, EstadoConcurso estado, int codigo, int idFinal) {
         this.nombre = nombre;
         this.fechaEvento = fechaEvento;
         this.horaEvento = horaEvento;
@@ -42,6 +43,7 @@ public class Concurso {
         //this.premios = premios;
         //this.auspiciantes = auspiciantes;
         this.dirigido = dirigido;
+        this.estado = estado;
         this.codigo = codigo;
         this.idFinal = idFinal;
     }
@@ -97,6 +99,14 @@ public class Concurso {
 
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public EstadoConcurso getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoConcurso estado) {
+        this.estado = estado;
     }
 
     public String getLugar() {
