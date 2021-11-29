@@ -20,29 +20,29 @@ import java.util.Scanner;
  */
 public class Concurso {
 
-    private String nombre;
-    private LocalDate fechaEvento;
-    private String horaEvento;
-    private LocalDate fechaInicioIns;
-    private LocalDate fechaCierreIns;
-    private Ciudad ciudad;
-    //private String lugar;
-    private List<Premio> premios = new ArrayList<Premio>();
-    private List<Auspiciante> auspiciantes = new ArrayList<Auspiciante>();
-    private TipoConcursante dirigido;
-    private EstadoConcurso estado;
-    private ArrayList<Mascota> mascotas;
-    private int codigo;
-    private static int idFinal;
+    //Atributos de la clase.
+    private String nombre;      //Nombre del concurso.
+    private LocalDate fechaEvento;      //Fecha en la que se realizará el concurso.
+    private String horaEvento;      //Hora en la que se realizará el concurso.
+    private LocalDate fechaInicioIns;       //Fecha de inicio de las inscripciones del concurso.
+    private LocalDate fechaCierreIns;       //Fecha de cierre de las inscripciones del concurso.
+    private Ciudad ciudad;      //Ciudad donde se realizará el concurso.
+    private List<Premio> premios = new ArrayList<Premio>();     //Lista que contiene los premios para los ganadores del concurso.
+    private List<Auspiciante> auspiciantes = new ArrayList<Auspiciante>();      //Lista de los auspiciantes del concurso.
+    private TipoConcursante dirigido;       //enum que representa los tipos de mascotas que pueden participar en el concurso.
+    private EstadoConcurso estado;      //enum que representa si el concurso se encuentra vigente y si es un concurso pasado.
+    private ArrayList<Mascota> mascotas;        //Lista de mascotas que están inscritas en el concurso.
+    private int codigo;     //Código único para identificar al concurso.
+    private static int idFinal;     //Variable de clase para ayudar a establecer la variable de instancia codigo.
 
-    public Concurso(String nombre, LocalDate fechaEvento, String horaEvento, LocalDate fechaInicioIns, LocalDate fechaCierreIns, Ciudad ciudad, /*String lugar,*/ List<Premio> premios, List<Auspiciante> auspiciantes, TipoConcursante dirigido, EstadoConcurso estado, ArrayList<Mascota> mascotas) {
+    //Constuctor que inicializa las variables de instancia con los valores recibidos como parámetros.
+    public Concurso(String nombre, LocalDate fechaEvento, String horaEvento, LocalDate fechaInicioIns, LocalDate fechaCierreIns, Ciudad ciudad, List<Premio> premios, List<Auspiciante> auspiciantes, TipoConcursante dirigido, EstadoConcurso estado, ArrayList<Mascota> mascotas) {
         this.nombre = nombre;
         this.fechaEvento = fechaEvento;
         this.horaEvento = horaEvento;
         this.fechaInicioIns = fechaInicioIns;
         this.fechaCierreIns = fechaCierreIns;
         this.ciudad = ciudad;
-        //this.lugar = lugar;
         this.premios = premios;
         this.auspiciantes = auspiciantes;
         this.dirigido = dirigido;
@@ -50,24 +50,37 @@ public class Concurso {
         this.mascotas = mascotas;
     }
     
+    /**
+     * 
+     * @return Se suma 1 a la variable de clase idFinal cada vez que se llama al método, luego se retorna dicho valor.
+     */
     public int generarIdFinal(){
         return ++idFinal;
     }
     
+    /**
+     * 
+     * Este método añade un objeto de la clase Concurso a una lista donde están todos los concursos creados.
+     * 
+     * @param concursos Lista que contiene los concursos existentes.
+     * @param c Objeto de tipo concurso.
+     */
     public static void registrarConcurso(ArrayList<Concurso> concursos, Concurso c) {
-        
         c.setCodigo(c.generarIdFinal());
         concursos.add(c);
         System.out.println("\nEl concurso ha sido creado con éxito.");
     }
     
-    
-    
+    /**
+     * 
+     * @return Retorna un String que contiene el nombre y el código del concurso.
+     */
     @Override
     public String toString() {
-        return nombre + " | " + "Código: " + codigo; //+ " | " + "Fecha del evento: " + fechaEvento + " | " + "Hora del evento: " + horaEvento + " | " + "Fecha de inicio de las inscripciones: " + fechaInicioIns + " | " + "Fecha de cierre de las inscripciones: " + fechaCierreIns + " | " + "Ciudad: " + ciudad + " | " /*+ "Lugar: " + lugar*/ + " | " + "Dirigido a: " + dirigido + " | " + "Estado del concurso: " + estado + " | " + "Código: " + codigo + " | " + "ID final: " + idFinal;
+        return nombre + " | " + "Código: " + codigo; 
     }
 
+    //Getters & setters.
     public String getNombre() {
         return nombre;
     }
@@ -124,14 +137,6 @@ public class Concurso {
         this.estado = estado;
     }
 
-    /*public String getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }*/
-
     public List<Premio> getPremios() {
         return premios;
     }
@@ -180,18 +185,15 @@ public class Concurso {
         this.idFinal = idFinal;
     }
 
+    /**
+     * Este método recorre la lista de concursos existentes y mostrará la información de cada uno.
+     * 
+     * @param concursos Lista de los concursos existentes.
+     */
     public static void mostrarConcusos(List<Concurso> concursos) {
         System.out.print("\n-- Bienvenido al menú de Administrar Concursos --\n");
         System.out.println("\nLos concursos existentes son: " + concursos);
 
     }
-
-    /*public void inscribirParticipante() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("A continuación inscribirá su mascota al concurso.");
-        for ()
-        
-    }*/
-    
 
 }

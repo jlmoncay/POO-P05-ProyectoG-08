@@ -186,6 +186,10 @@ public class Sistema {
 
     }
     
+    /**
+     * Este método se encarga de seleccionar la opción ingresada por el usuario. Estas opciones pueden ser:
+     * 1. Crear concurso - 2. Inscribir participante - 3. Regresar al menú principal.
+     */
     public static void adminConcursos() {
         int opcion = menuAdminConcursos();
         switch (opcion) {
@@ -202,6 +206,11 @@ public class Sistema {
         }
     }
     
+    /**
+     * Este método muestra el menú de Administrar Concursos y le pide al usuario una opción para luego retornarla.
+     * 
+     * @return Retorna la opción ingresada por el usuario.
+     */
     public static int menuAdminConcursos() {
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -218,6 +227,10 @@ public class Sistema {
         return opcion;  
     }
     
+    /**
+     * Este método pide al usuario todos los datos necesarios para crear un concurso. Luego de ingresar los datos, se crea 
+     * el nuevo concurso y se lo agrega a la lista de concursos existentes.
+     */
     public static void crearConcurso() {
         Scanner sc = new Scanner(System.in);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -264,6 +277,9 @@ public class Sistema {
         Concurso.registrarConcurso(concursos, nuevoConcurso);        
     }
     
+    /**
+     * Este método pide al usuario la información necesaria para inscribir una mascota a un concurso vigente.
+     */
     public static void inscribirParticipante() {
         Scanner sc = new Scanner(System.in);
         System.out.println("\n-- Inscribir participante al concurso --");
@@ -331,7 +347,10 @@ public class Sistema {
         }
     }
     
-    
+    /**
+     * Este método carga los datos iniciales que se solicitaron en las indicaciones del proyecto. Crea tres ciudades, tres
+     * auspiciantes, diez dueños de mascotas, diez mascotas, tres premios, un concurso pasado y un concurso vigente.
+     */
     public static void cargarDatos() {
         //Creación de las 3 ciudades.
         Ciudad ciudad1 = new Ciudad("Guayaquil", "Guayas");
