@@ -293,6 +293,7 @@ public class Sistema {
                 System.out.println("Por el momento no hay concursos vigentes.");
             }
         }
+        
         System.out.println("Ingrese el código del concurso donde desea inscribir a su mascota: ");
         int codigoConcur = sc.nextInt();
         sc.nextLine();
