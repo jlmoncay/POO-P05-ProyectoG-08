@@ -35,6 +35,7 @@ public class Sistema {
     private static ArrayList<Ciudad> ciudades = new ArrayList<>();
     private static ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
     private static ArrayList<Premio> premios = new ArrayList<>();
+    private static ArrayList<Mascota> mascotasParticiparon = new ArrayList<>();
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -140,10 +141,10 @@ public class Sistema {
 
                             if (tipo.toUpperCase().equals("GATO")) {
                                 Mascota masc = new Mascota(nombre, TipoMascota.GATO, raza, formato, dueñoR);
-                                masc.registrarMascota(mascotas, masc);
+                                Mascota.registrarMascota(mascotas, masc);
                             } else if (tipo.toUpperCase().equals("PERRO")) {
                                 Mascota masc = new Mascota(nombre, TipoMascota.PERRO, raza, formato, dueñoR);
-                                masc.registrarMascota(mascotas, masc);
+                                Mascota.registrarMascota(mascotas, masc);
                             }
 
                         }
@@ -320,6 +321,7 @@ public class Sistema {
         }
         
         concursos.get(indiceConcur).getMascotas().add(mascotas.get(indiceMasc));
+        mascotasParticiparon.add(mascotas.get(indiceMasc));
         System.out.println("\nLa mascota ha sigo inscrita exitosamente.");        
     }
     
