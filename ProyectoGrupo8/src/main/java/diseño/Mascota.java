@@ -37,7 +37,7 @@ public class Mascota {
     public int generarIdMascota(){
         return ++idFinal;
     }
-    
+    //metodo añadir la mascota a la lista junto a su id unico
     public static void registrarMascota(ArrayList<Mascota >mascotas, Mascota masc){
         int id = masc.generarIdMascota();
         masc.setIdMascota(id);

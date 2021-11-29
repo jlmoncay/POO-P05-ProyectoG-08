@@ -106,6 +106,7 @@ public class Sistema {
                 }
 
             } else if (n == 3) {
+                //Metodo para mostrar la lista de mascotas registradas
                 Mascota.mostrarMascotas(mascotas);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -125,20 +126,20 @@ public class Sistema {
                         LocalDate formato = LocalDate.parse(fech, formatter);
                         System.out.println("Ingrese la cedula del dueño de la mascota: ");
                         String ceduDueño = sc.nextLine();
-
+                        //lazo for para verificar si el dueño ingresado se encuentra registrado en la lista
                         Dueño dueñoR = null;
                         for (Dueño d : dueñoss) {
                             String cedula = d.getCedula();
                             if (ceduDueño.equals(cedula)) {
                                 dueñoR = d;
                             }
-                            System.out.println(dueñoR.getCedula());
+                            
                         }
                         if (dueñoR.equals(null)) {
                             System.out.println("No se ha encontrado la informacion, porfavor registre primero al dueño");
                             break;
                         } else {
-
+                            //validar que tipo es la mascota a registrar
                             if (tipo.toUpperCase().equals("GATO")) {
                                 Mascota masc = new Mascota(nombre, TipoMascota.GATO, raza, formato, dueñoR);
                                 Mascota.registrarMascota(mascotas, masc);
@@ -156,6 +157,7 @@ public class Sistema {
                         int idMascotaEliminar = sc.nextInt();
                         sc.nextLine();
                         boolean bool = false;
+                        //lazo for para verificar si la mascota se encuentra en la lista para removerla o mostrar un mensaje de no encontrada
                         for (Mascota m : mascotas) {
 
                             int id = m.getIdMascota();
@@ -316,7 +318,7 @@ public class Sistema {
             int indiceMasc = 0;
             for (Mascota m : mascotas) {
                 if (m.getIdMascota() == codigoMasc) {
-                    indiceMasc = m.getIdMascota();
+                    indiceMasc = mascotas.indexOf(m);
                 }
             }
             
