@@ -29,19 +29,20 @@ public class Sistema {
     /**
      * @param args the command line arguments
      */
-    private static ArrayList<Dueño> dueñoss;
-    private static ArrayList<Mascota> mascotas;
-    private static ArrayList<Concurso> concursos;
-    private static ArrayList<Ciudad> ciudades;
-    private static ArrayList<Auspiciante> auspiciantes;
-    private static ArrayList<Premio> premios;
+    private static ArrayList<Dueño> dueñoss = new ArrayList<>();
+    private static ArrayList<Mascota> mascotas = new ArrayList<>();
+    private static ArrayList<Concurso> concursos = new ArrayList<>();
+    private static ArrayList<Ciudad> ciudades = new ArrayList<>();
+    private static ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
+    private static ArrayList<Premio> premios = new ArrayList<>();
 
     public static void main(String[] args) {
         // TODO code application logic here
-        dueñoss = new ArrayList<>();
+        /*dueñoss = new ArrayList<>();
         mascotas = new ArrayList<>();
-        concursos = new ArrayList<>();
+        concursos = new ArrayList<>();*/
         Mascota.setIdFinal(mascotas.size());
+        cargarDatos();
         Scanner sc = new Scanner(System.in);
         int n;
 
@@ -181,7 +182,6 @@ public class Sistema {
         } while (n != 4);
         System.out.println("Adiós");
 
-        sc.close();
 
     }
     
@@ -224,7 +224,6 @@ public class Sistema {
             sc.nextLine();
         } while ((opcion < 1) || (opcion > 3));
 
-        sc.close();
         
         return opcion;  
     }
@@ -234,9 +233,9 @@ public class Sistema {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
         System.out.println("-- Crear concurso --");
-        System.out.print("Ingrese el nombre del concurso: ");
+        System.out.println("Ingrese el nombre del concurso: ");
         String nombre = sc.nextLine();
-        System.out.print("Ingrese la fecha en la que se realizará el concurso (dd/mm/yyyy): "); 
+        System.out.println("Ingrese la fecha en la que se realizará el concurso (dd/mm/yyyy): "); 
         String fechaEvento = sc.nextLine();
         System.out.println("Ingrese la hora en la que se realizará el concurso (hh:mm:ss): ");
         String horaEvento = sc.nextLine();
@@ -272,11 +271,17 @@ public class Sistema {
             estado = EstadoConcurso.VIGENTE;
         }
         
+//        System.out.println("Ingrese los auspiciantes del concurso (Dog Chow | Pro-can | Agripac)");
+//        String nombreAusp = sc.nextLine();
+        
+        
+//        String[] cadena = nombreAusp.split("|");
+//        if (cadena[0].equals())
+        
         Concurso nuevoConcurso = new Concurso(nombre, LocalDate.parse(fechaEvento, formatter), horaEvento, LocalDate.parse(fechaInicioIns, formatter), LocalDate.parse(fechaCierreIns, formatter), ciudad, premios, auspiciantes, tipo, estado, mascotas);
         
         Concurso.registrarConcurso(concursos, nuevoConcurso);
         
-        sc.close();
     }
     
     
@@ -295,10 +300,10 @@ public class Sistema {
         Auspiciante ausp1 = new Auspiciante("Dog Chow", "Urdesa Central", "0942578812", ciudad1, "dogchow@gmail.com", "https://www.purina-latam.com/ec/dogchow");
         Auspiciante ausp2 = new Auspiciante("Pro-can", "Cumbayá", "0967731564", ciudad2, "procan@gmail.com", "https://www.procan.com.ec/");
         Auspiciante ausp3 = new Auspiciante("Agripac", "Totoracocha", "0930696638", ciudad3, "agripac@gmail.com", "https://agripac.com.ec/");
-
-        auspiciantes.add(ausp1);
-        auspiciantes.add(ausp2);
-        auspiciantes.add(ausp3);
+        
+        Auspiciante.registrarAuspiciante(auspiciantes, ausp1);
+        Auspiciante.registrarAuspiciante(auspiciantes, ausp2);
+        Auspiciante.registrarAuspiciante(auspiciantes, ausp3);
 
         //Creación de 10 dueños de mascotas
         Dueño dueño1 = new Dueño("0941782564", "Jorge", "Moncayo", "Ceibos", "0936748871", ciudad1, "jorgemoncayo@gmail.com");
