@@ -50,7 +50,7 @@ public class Concurso {
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + " | " + "Fecha del evento: " + fechaEvento + " | " + "Hora del evento: " + horaEvento + " | " + "Fecha de inicio de las inscripciones: " + fechaInicioIns + " | " + "Fecha de cierre de las inscripciones: " + fechaCierreIns + " | " + "Ciudad: " + ciudad + " | " + "Lugar: " + lugar + " | " + "Dirigido a: " + dirigido + " | " + "Código: " + codigo + " | " + "ID final: " + idFinal;
+        return "Nombre: " + nombre + " | " + "Fecha del evento: " + fechaEvento + " | " + "Hora del evento: " + horaEvento + " | " + "Fecha de inicio de las inscripciones: " + fechaInicioIns + " | " + "Fecha de cierre de las inscripciones: " + fechaCierreIns + " | " + "Ciudad: " + ciudad + " | " + "Lugar: " + lugar + " | " + "Dirigido a: " + dirigido + " | " + "Estado del concurso: " + estado + " | " + "Código: " + codigo + " | " + "ID final: " + idFinal;
     }
 
     public String getNombre() {

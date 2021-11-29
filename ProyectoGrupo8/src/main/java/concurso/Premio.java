@@ -49,7 +49,7 @@ public class Premio {
 
     @Override
     public String toString() {
-        return "Auspiciante: " + auspiciante + " | " + "Lugar: " + lugar + " | " + "Descripción: " + descripcion;
+        return ">> " + lugar + ": " + descripcion + ", " + auspiciante.getNombre();
     }
 
 }

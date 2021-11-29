@@ -7,6 +7,7 @@ package system;
 
 import concurso.Ciudad;
 import concurso.Concurso;
+import concurso.Premio;
 import person.Dueño;
 import person.Persona;
 import diseño.Mascota;
@@ -31,6 +32,7 @@ public class Sistema {
     private static ArrayList<Concurso> concursos;
     private static ArrayList<Ciudad> ciudades;
     private static ArrayList<Auspiciante> auspiciantes;
+    private static ArrayList<Premio> premios;
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -248,6 +250,14 @@ public class Sistema {
         mascotas.add(masc9);
         mascotas.add(masc10);
         
+        //Creación de 3 premios.
+        Premio premio1 = new Premio(ausp1, "Primer lugar", "$500 y productos Dog Chow");
+        Premio premio2 = new Premio(ausp2, "Segundo lugar", "$300 y productos Pro-can");
+        Premio premio3 = new Premio(ausp3, "Tercer lugar", "$100 y productos Agripac");
+        
+        premios.add(premio1);
+        premios.add(premio2);
+        premios.add(premio3);
         
     }
 
