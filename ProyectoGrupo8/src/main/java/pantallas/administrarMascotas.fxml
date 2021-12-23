@@ -5,14 +5,15 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
         <menus>
@@ -30,26 +31,30 @@
                   <Image url="@../Recursos/fondo.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="86.0" layoutY="26.0" prefHeight="57.0" prefWidth="418.0" text="ADMINISTRAR CONCURSOS">
+            <Label layoutX="107.0" layoutY="24.0" prefHeight="57.0" prefWidth="418.0" text="ADMINISTRAR MASCOTAS">
                <font>
                   <Font name="System Bold Italic" size="31.0" />
                </font>
             </Label>
-            <Button layoutX="228.0" layoutY="123.0" mnemonicParsing="false" text="Crear concurso">
+            <Button layoutX="116.0" layoutY="311.0" mnemonicParsing="false" text="Agregar Mascota">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="202.0" layoutY="200.0" mnemonicParsing="false" text="Inscribir participante">
+            <Button layoutX="330.0" layoutY="311.0" mnemonicParsing="false" text="Menú principal">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="223.0" layoutY="283.0" mnemonicParsing="false" text="Menú principal">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Button>
+            <TableView layoutX="55.0" layoutY="88.0" prefHeight="200.0" prefWidth="490.0">
+              <columns>
+                <TableColumn prefWidth="89.0" text="Codigo" />
+                <TableColumn prefWidth="84.0" text="Nombre" />
+                  <TableColumn prefWidth="88.0" text="Tipo" />
+                  <TableColumn prefWidth="92.0" text="Dueño" />
+                  <TableColumn prefWidth="136.0" text="Opciones" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
    </children>
