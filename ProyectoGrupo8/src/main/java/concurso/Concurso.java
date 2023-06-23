@@ -60,19 +60,6 @@ public class Concurso {
     
     /**
      * 
-     * Este método añade un objeto de la clase Concurso a una lista donde están todos los concursos creados.
-     * 
-     * @param concursos Lista que contiene los concursos existentes.
-     * @param c Objeto de tipo concurso.
-     */
-    public static void registrarConcurso(ArrayList<Concurso> concursos, Concurso c) {
-        c.setCodigo(c.generarIdFinal());
-        concursos.add(c);
-        System.out.println("\nEl concurso ha sido creado con éxito.");
-    }
-    
-    /**
-     * 
      * @return Retorna un String que contiene el nombre y el código del concurso.
      */
     @Override
@@ -190,10 +177,5 @@ public class Concurso {
      * 
      * @param concursos Lista de los concursos existentes.
      */
-    public static void mostrarConcusos(List<Concurso> concursos) {
-        System.out.print("\n-- Bienvenido al menú de Administrar Concursos --\n");
-        System.out.println("\nLos concursos existentes son: " + concursos);
-
-    }
 
 }

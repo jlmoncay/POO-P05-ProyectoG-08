@@ -8,6 +8,7 @@ package system;
 import concurso.Ciudad;
 import concurso.Concurso;
 import concurso.EstadoConcurso;
+import concurso.MetodoConcurso;
 import concurso.Premio;
 import person.Dueño;
 import person.Persona;
@@ -56,7 +57,7 @@ public class Sistema {
 
             if (n == 1) {
 
-                Concurso.mostrarConcusos(concursos);
+                MetodoConcurso.mostrarConcurso(concursos);
                 adminConcursos();
 
             } else if (n == 2) {
@@ -274,7 +275,7 @@ public class Sistema {
         }    
         Concurso nuevoConcurso = new Concurso(nombre, LocalDate.parse(fechaEvento, formatter), horaEvento, LocalDate.parse(fechaInicioIns, formatter), LocalDate.parse(fechaCierreIns, formatter), ciudad, premios, auspiciantes, tipo, estado, mascotas);
         
-        Concurso.registrarConcurso(concursos, nuevoConcurso);        
+        MetodoConcurso.registrarConcurso(concursos, nuevoConcurso);        
     }
     
     /**
@@ -429,7 +430,7 @@ public class Sistema {
         
        //Creación de un concurso vigente.
        Concurso concursoVigente1 = new Concurso("Expo Pet 2021", LocalDate.parse("30/11/2021", formatter), "15:00:00", LocalDate.parse("05/11/2021", formatter), LocalDate.parse("10/11/2021", formatter), ciudad1, premios, auspiciantes, TipoConcursante.PERRO, EstadoConcurso.VIGENTE, mascotas);  
-       Concurso.registrarConcurso(concursos, concursoVigente1);
+       MetodoConcurso.registrarConcurso(concursos, concursoVigente1);
        
        //Creación de un concurso pasado.
        ArrayList<Mascota> listaMascotas = new ArrayList<>();
@@ -439,6 +440,6 @@ public class Sistema {
        listaMascotas.add(masc7);
        listaMascotas.add(masc9);
        Concurso concursoPasado = new Concurso("Insta Pet", LocalDate.parse("25/07/2019", formatter), "12:00:00", LocalDate.parse("15/06/2021", formatter), LocalDate.parse("22/07/2021", formatter), ciudad2, premios, auspiciantes, TipoConcursante.AMBOS, EstadoConcurso.PASADO, listaMascotas);
-       Concurso.registrarConcurso(concursos, concursoPasado);     
+       MetodoConcurso.registrarConcurso(concursos, concursoPasado);     
     }
 }
