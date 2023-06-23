@@ -37,6 +37,32 @@ public class Dueño extends Persona {
     /* método editarDueño recibe el string cédula y un arraylist del tipo dueño, si el string cedula coincide con la cédula de un objeto dueño pasa actuliza los datos 
      de lo contrario muestra un mensaje de error*/
    
+    public static void crearDueño(ArrayList<Dueño> dueños) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese los datos del dueño: ");
+        System.out.println("Ingrese número de cedula ");
+        String ced = sc.nextLine();
+        System.out.println("Ingrese el nombre:  ");
+
+        String name = sc.nextLine();
+        System.out.println("Ingrese apellido:  ");
+        String apell = sc.nextLine();
+        System.out.println("Ingrese dirección:  ");
+        String direcc = sc.nextLine();
+        System.out.println("Ingrese número de teléfono: ");
+        String telf = sc.nextLine();
+        System.out.println("Ingrese ciudad: ");
+        String ciuda = sc.nextLine();
+        System.out.println("Ingrese provincia: ");
+        String prov = sc.nextLine();
+        System.out.println("Ingrese email: ");
+        String mail = sc.nextLine();
+        Ciudad ciudad = new Ciudad(ciuda, prov);
+        Dueño due = new Dueño(ced, name, apell, direcc, telf, ciudad, mail);
+        due.toString();
+        dueños.add(due);
+    }
 
     public static void editarDueño(String cedula, ArrayList<Dueño> dueños) {
 

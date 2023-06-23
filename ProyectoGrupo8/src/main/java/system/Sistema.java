@@ -68,29 +68,7 @@ public class Sistema {
                 switch (c) {
 
                     case 1:
-                        System.out.println("Ingrese los datos del dueño: ");
-                        System.out.println("Ingrese número de cedula ");
-                        String ced = sc.nextLine();
-                        System.out.println("Ingrese el nombre:  ");
-
-                        String name = sc.nextLine();
-                        System.out.println("Ingrese apellido:  ");
-                        String apell = sc.nextLine();
-                        System.out.println("Ingrese dirección:  ");
-                        String direcc = sc.nextLine();
-                        System.out.println("Ingrese número de teléfono: ");
-                        String telf = sc.nextLine();
-                        System.out.println("Ingrese ciudad: ");
-                        String ciuda = sc.nextLine();
-                        System.out.println("Ingrese provincia: ");
-                        String prov = sc.nextLine();
-                        System.out.println("Ingrese email: ");
-                        String mail = sc.nextLine();
-                        Ciudad ciudad = new Ciudad(ciuda, prov);
-                        Dueño due = new Dueño(ced, name, apell, direcc, telf, ciudad, mail);
-                        due.toString();
-                        dueñoss.add(due);
-
+                        Dueño.crearDueño(dueñoss);
                         break;
                     case 2:
                         System.out.println("Editar Dueño");
@@ -115,63 +93,10 @@ public class Sistema {
                 sc.nextLine();
                 switch (c) {
                     case 1:
-                        System.out.println("Ingrese el nombre de la mascota: ");
-                        String nombre = sc.nextLine();
-                        System.out.println("Ingrese el tipo de mascota (Perro o Gato): ");
-                        String tipo = sc.nextLine();
-                        System.out.println("Ingrese la raza de su mascota: ");
-                        String raza = sc.nextLine();
-                        System.out.println("Ingrese la fecha de hoy en formato dd/mm/yyyy: ");
-                        String fech = sc.nextLine();
-                        LocalDate formato = LocalDate.parse(fech, formatter);
-                        System.out.println("Ingrese la cedula del dueño de la mascota: ");
-                        String ceduDueño = sc.nextLine();
-                        //lazo for para verificar si el dueño ingresado se encuentra registrado en la lista
-                        Dueño dueñoR = null;
-                        for (Dueño d : dueñoss) {
-                            String cedula = d.getCedula();
-                            if (ceduDueño.equals(cedula)) {
-                                dueñoR = d;
-                            }
-                            
-                        }
-                        if (dueñoR.equals(null)) {
-                            System.out.println("No se ha encontrado la informacion, porfavor registre primero al dueño");
-                            break;
-                        } else {
-                            //validar que tipo es la mascota a registrar
-                            if (tipo.toUpperCase().equals("GATO")) {
-                                Mascota masc = new Mascota(nombre, TipoMascota.GATO, raza, formato, dueñoR);
-                                Mascota.registrarMascota(mascotas, masc);
-                            } else if (tipo.toUpperCase().equals("PERRO")) {
-                                Mascota masc = new Mascota(nombre, TipoMascota.PERRO, raza, formato, dueñoR);
-                                Mascota.registrarMascota(mascotas, masc);
-                            }
-
-                        }
+                        Mascota.crearMascota(dueñoss, mascotas);
                         break;
                     case 2:
-
-                        System.out.println("Eliminar mascota");
-                        System.out.println("Ingrese la id de la Mascota a eliminar: ");
-                        int idMascotaEliminar = sc.nextInt();
-                        sc.nextLine();
-                        boolean bool = false;
-                        //lazo for para verificar si la mascota se encuentra en la lista para removerla o mostrar un mensaje de no encontrada
-                        for (Mascota m : mascotas) {
-
-                            int id = m.getIdMascota();
-                            if (id == idMascotaEliminar) {
-                                mascotas.remove(m);
-                                System.out.println("Esa mascota ha sido eliminada");
-                                bool = true;
-                                break;
-                            }
-                        }
-                        if (bool == false) {
-                            System.out.println("Esa mascota no se encuentra registrada");
-                        }
-
+                        Mascota.eliminarMascota(mascotas);
                         break;
                     case 3:
                         System.out.println("Bienvenido al menú principal");
@@ -194,10 +119,10 @@ public class Sistema {
         int opcion = menuAdminConcursos();
         switch (opcion) {
             case 1:
-                crearConcurso();
+                Concurso.crearConcurso(concursos,ciudades,premios,auspiciantes,mascotas);
                 break;
             case 2:
-                inscribirParticipante();
+                Concurso.inscribirParticipante(concursos,mascotas,mascotasParticiparon);
                 break;
             case 3:
                 break;          
@@ -225,127 +150,7 @@ public class Sistema {
             sc.nextLine();
         } while ((opcion < 1) || (opcion > 3));  
         return opcion;  
-    }
-    
-    /**
-     * Este método pide al usuario todos los datos necesarios para crear un concurso. Luego de ingresar los datos, se crea 
-     * el nuevo concurso y se lo agrega a la lista de concursos existentes.
-     */
-    public static void crearConcurso() {
-        Scanner sc = new Scanner(System.in);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        
-        System.out.println("-- Crear concurso --");
-        System.out.println("Ingrese el nombre del concurso: ");
-        String nombre = sc.nextLine();
-        System.out.println("Ingrese la fecha en la que se realizará el concurso (dd/mm/yyyy): "); 
-        String fechaEvento = sc.nextLine();
-        System.out.println("Ingrese la hora en la que se realizará el concurso (hh:mm:ss): ");
-        String horaEvento = sc.nextLine();
-        System.out.println("Ingrese la fecha de inicio de las inscripciones (dd/mm/yyyy): ");
-        String fechaInicioIns = sc.nextLine();
-        System.out.println("Ingrese la fecha de cierre de las inscripciones (dd/mm/yyyy): ");
-        String fechaCierreIns = sc.nextLine();
-        System.out.println("Ingrese el nombre de la ciudad donde se realizará el concurso (Guayaquil - Quito - Cuenca): ");
-        String nombreCiudad = sc.nextLine();
-        Ciudad ciudad = null;
-        for (Ciudad c : ciudades) {
-            if (nombreCiudad.toLowerCase().equals(c.getNombre().toLowerCase())) {
-                ciudad = c;
-            }
-        }
-        TipoConcursante tipo;
-        System.out.println("Ingrese el tipo de concursante que participará (GATO - PERRO - AMBOS): ");
-        String tipoConcur = sc.nextLine().toUpperCase();
-        if (tipoConcur.equals("AMBOS")) {
-            tipo = TipoConcursante.AMBOS;
-        } else if (tipoConcur.equals("GATO")) {
-            tipo = TipoConcursante.GATO;
-        } else {
-            tipo = TipoConcursante.PERRO;
-        }  
-        EstadoConcurso estado;
-        System.out.println("Ingrese el estado del concurso (PASADO - VIGENTE): ");
-        String estadoConcur = sc.nextLine().toUpperCase();
-        if (estadoConcur.equals("PASADO")) {
-            estado = EstadoConcurso.PASADO;
-        } else {
-            estado = EstadoConcurso.VIGENTE;
-        }    
-        Concurso nuevoConcurso = new Concurso(nombre, LocalDate.parse(fechaEvento, formatter), horaEvento, LocalDate.parse(fechaInicioIns, formatter), LocalDate.parse(fechaCierreIns, formatter), ciudad, premios, auspiciantes, tipo, estado, mascotas);
-        
-        Concurso.registrarConcurso(concursos, nuevoConcurso);        
-    }
-    
-    /**
-     * Este método pide al usuario la información necesaria para inscribir una mascota a un concurso vigente.
-     */
-    public static void inscribirParticipante() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\n-- Inscribir participante al concurso --");
-        System.out.println("Los concursos que se encuentran vigentes son: ");
-        String continuar = "";
-        for (Concurso c : concursos) {
-            if (c.getEstado().equals(EstadoConcurso.VIGENTE)) {
-                System.out.println(c);
-                continuar = "S";
-            } else if (continuar.equals("")) {
-                System.out.println("Por el momento no hay concursos vigentes.");
-            }
-        }
-        if (continuar.toLowerCase().equals("s")) {
-            System.out.println("Ingrese el código del concurso donde desea inscribir a su mascota: ");
-            int codigoConcur = sc.nextInt();
-            sc.nextLine();
-            Concurso concur = null;
-            for (Concurso c : concursos) {
-                if (c.getCodigo() == codigoConcur) {
-                    concur = c;
-                }
-            }
-            switch (concur.getDirigido()) {
-                case PERRO:
-                    System.out.println("La lista de mascotas es la siguiente: ");
-                    for (Mascota m : mascotas) {
-                        if (m.getTipo().equals(TipoMascota.PERRO)) {
-                            System.out.println(m);
-                        }
-                    }
-                    break;
-
-                case GATO:
-                    System.out.println("La lista de mascotas es la siguiente: ");
-                    for (Mascota m : mascotas) {
-                        if (m.getTipo().equals(TipoMascota.GATO)) {
-                            System.out.println(m);
-                        }
-                    }
-                    break;
-                               
-                default:
-                    System.out.println("La lista de mascotas es la siguiente: ");
-                    for (Mascota m : mascotas) {
-                        System.out.println(m);
-                    }
-            }
-            System.out.println("Ingrese el id de la mascota a inscribir: ");
-            int codigoMasc = sc.nextInt();
-            sc.nextLine();
-            int indiceMasc = 0;
-            for (Mascota m : mascotas) {
-                if (m.getIdMascota() == codigoMasc) {
-                    indiceMasc = mascotas.indexOf(m);
-                }
-            }
-            
-            concur.getMascotas().add(mascotas.get(indiceMasc));
-            mascotasParticiparon.add(mascotas.get(indiceMasc));
-            System.out.println("\nLa mascota ha sido inscrita exitosamente.");
-            
-        } else {
-            System.out.println("Primero registre un concurso vigente.");
-        }
-    }
+    }  
     
     /**
      * Este método carga los datos iniciales que se solicitaron en las indicaciones del proyecto. Crea tres ciudades, tres
