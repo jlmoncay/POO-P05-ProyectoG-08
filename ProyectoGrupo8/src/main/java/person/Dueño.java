@@ -9,6 +9,7 @@ import concurso.Ciudad;
 import person.Persona;
 import java.util.ArrayList;
 import java.util.Scanner;
+import concurso.Observer;
 
 /**
  *
@@ -17,6 +18,7 @@ import java.util.Scanner;
  */
 public class Dueño extends Persona {
     // variables de instancia
+    private ArrayList<Observer> observadores = new ArrayList<>();
 
     private String cedula;
     private String apellido;
@@ -37,7 +39,14 @@ public class Dueño extends Persona {
     /* método editarDueño recibe el string cédula y un arraylist del tipo dueño, si el string cedula coincide con la cédula de un objeto dueño pasa actuliza los datos 
      de lo contrario muestra un mensaje de error*/
    
-
+    public void agregarObservador(Observer observador){
+        observadores.add(observador);
+    }
+    
+    public void eliminarObservador(Observer observador){
+        observadores.remove(observador);
+    }
+    
     public static void editarDueño(String cedula, ArrayList<Dueño> dueños) {
 
         Scanner sc = new Scanner(System.in);
@@ -62,12 +71,19 @@ public class Dueño extends Persona {
                                 String direc = sc.nextLine();
 
                                 d.setDireccion(direc);
+                                
+                                for(Observer observador: d.observadores){
+                                    observador.actualizar("Direccion actualizada: "+direc);
+                                }
                                 break;
                             case 2:
                                 System.out.println("Ingrese su nuevo teléfono");
                                 String telf = sc.nextLine();
 
                                 d.setTelefono(telf);
+                                for(Observer observador: d.observadores){
+                                    observador.actualizar("Teléfono actualizada: "+telf);
+                                }
                                 break;
                             case 3:
                                 System.out.println("Ingrese ciudad");
@@ -94,7 +110,7 @@ public class Dueño extends Persona {
         System.out.println("El número ingresado no ha sido encontrado");
         }
         
-        
+    
         
     
     // getters y setters
