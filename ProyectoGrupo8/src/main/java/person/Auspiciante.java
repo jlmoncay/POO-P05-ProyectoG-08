@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package person;
 
 import concurso.Ciudad;
@@ -13,17 +8,19 @@ import person.Persona;
  *
  * @author USER
  */
-public class Auspiciante extends Persona {
+public class Auspiciante  {
     // variables de instancia
     private String paginaWeb; 
     private int codigoAuspiciante;
     private static int idFinal;
+    private PersonalInfo personalInfo;
     
     // contructor
     
     public Auspiciante(String nombre, String direccion, String telefono, Ciudad ciudad, String email,String paginaWeb){ 
-        super(nombre, direccion, telefono, ciudad, email);
         this.paginaWeb= paginaWeb; 
+        this.personalInfo = new PersonalInfo(nombre, direccion, telefono, ciudad, email);
+
         
     }
     // método que retor un int, este genera el codigo luego de aumentar  la variable id final 
@@ -61,7 +58,7 @@ public class Auspiciante extends Persona {
 // Método to string que muestra la información de un  objeto auspiciante
     @Override
     public String toString() {
-        return "Auspiciante{" + "paginaWeb=" + paginaWeb + ", codigoAuspiciante=" + codigoAuspiciante + '}';
+        return "Auspiciante{" + personalInfo.toString() + ", paginaWeb=" + paginaWeb + ", codigoAuspiciante=" + codigoAuspiciante + '}';
     }
     
     

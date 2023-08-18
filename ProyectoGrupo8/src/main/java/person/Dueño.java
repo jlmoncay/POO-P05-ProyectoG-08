@@ -9,26 +9,23 @@ import concurso.Ciudad;
 import person.Persona;
 import java.util.ArrayList;
 import java.util.Scanner;
-import concurso.Observer;
 
 /**
  *
  * @author Beatriz Quizhpi
  *
  */
-public class Dueño extends Persona {
+public class Dueño {
     // variables de instancia
-    private ArrayList<Observer> observadores = new ArrayList<>();
 
     private String cedula;
     private String apellido;
-    //constructor 
+    private PersonalInfo personalInfo; // Use PersonalInfo
 
     public Dueño(String cedula, String nombre, String apellido, String direccion, String telefono, Ciudad ciudad, String email) {
-        super(nombre, direccion, telefono, ciudad, email);
         this.cedula = cedula;
         this.apellido = apellido;
-
+        this.personalInfo = new PersonalInfo(nombre, direccion, telefono, ciudad, email);
     }
     // método mostrarDueños  que recibe una arraylist del tipo dueño e imprime el arraylist
 
@@ -39,14 +36,7 @@ public class Dueño extends Persona {
     /* método editarDueño recibe el string cédula y un arraylist del tipo dueño, si el string cedula coincide con la cédula de un objeto dueño pasa actuliza los datos 
      de lo contrario muestra un mensaje de error*/
    
-    public void agregarObservador(Observer observador){
-        observadores.add(observador);
-    }
-    
-    public void eliminarObservador(Observer observador){
-        observadores.remove(observador);
-    }
-    
+
     public static void editarDueño(String cedula, ArrayList<Dueño> dueños) {
 
         Scanner sc = new Scanner(System.in);
@@ -71,19 +61,12 @@ public class Dueño extends Persona {
                                 String direc = sc.nextLine();
 
                                 d.setDireccion(direc);
-                                
-                                for(Observer observador: d.observadores){
-                                    observador.actualizar("Direccion actualizada: "+direc);
-                                }
                                 break;
                             case 2:
                                 System.out.println("Ingrese su nuevo teléfono");
                                 String telf = sc.nextLine();
 
                                 d.setTelefono(telf);
-                                for(Observer observador: d.observadores){
-                                    observador.actualizar("Teléfono actualizada: "+telf);
-                                }
                                 break;
                             case 3:
                                 System.out.println("Ingrese ciudad");
@@ -110,7 +93,7 @@ public class Dueño extends Persona {
         System.out.println("El número ingresado no ha sido encontrado");
         }
         
-    
+        
         
     
     // getters y setters
@@ -132,7 +115,7 @@ public class Dueño extends Persona {
 // Método to string para mostrar información del objeto dueño en el que también se llama al método to string de la clase padre
     @Override
     public String toString() {
-        return "Dueño{" + super.toString() + "cedula=" + cedula + ", apellido=" + apellido + '}';
+        return "Dueño{" + personalInfo.toString() + ", cedula=" + cedula + ", apellido=" + apellido + '}';
     }
 
 }
