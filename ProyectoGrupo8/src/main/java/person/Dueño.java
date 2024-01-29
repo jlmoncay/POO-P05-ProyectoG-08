@@ -15,18 +15,17 @@ import java.util.Scanner;
  * @author Beatriz Quizhpi
  *
  */
-public class Dueño extends Persona {
+public class Dueño {
     // variables de instancia
 
     private String cedula;
     private String apellido;
-    //constructor 
+    private PersonalInfo personalInfo; // Use PersonalInfo
 
     public Dueño(String cedula, String nombre, String apellido, String direccion, String telefono, Ciudad ciudad, String email) {
-        super(nombre, direccion, telefono, ciudad, email);
         this.cedula = cedula;
         this.apellido = apellido;
-
+        this.personalInfo = new PersonalInfo(nombre, direccion, telefono, ciudad, email);
     }
     // método mostrarDueños  que recibe una arraylist del tipo dueño e imprime el arraylist
 
@@ -116,7 +115,7 @@ public class Dueño extends Persona {
 // Método to string para mostrar información del objeto dueño en el que también se llama al método to string de la clase padre
     @Override
     public String toString() {
-        return "Dueño{" + super.toString() + "cedula=" + cedula + ", apellido=" + apellido + '}';
+        return "Dueño{" + personalInfo.toString() + ", cedula=" + cedula + ", apellido=" + apellido + '}';
     }
 
 }

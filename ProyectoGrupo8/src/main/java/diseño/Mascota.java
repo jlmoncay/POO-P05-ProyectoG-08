@@ -7,11 +7,12 @@ package diseño;
 import person.Dueño;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import concurso.Observer;
 /**
  *
  * @author Andres
  */
-public class Mascota {
+public class Mascota implements Observer {
     private String nombre;
     private TipoMascota tipo;
     private String raza;
@@ -43,6 +44,11 @@ public class Mascota {
         masc.setIdMascota(id);
         masc.toString();
         mascotas.add(masc); 
+    }
+    
+    @Override
+    public void actualizar(String mensaje){
+        System.out.println("Mascota " + nombre + "ha sido actualizada"+ mensaje);
     }
     
     //getters

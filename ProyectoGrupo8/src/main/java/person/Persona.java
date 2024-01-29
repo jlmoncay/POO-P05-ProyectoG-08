@@ -14,66 +14,27 @@ import concurso.Ciudad;
 public class Persona {
     
     // variables de instancia
-    private String nombre; 
-    private String direccion; 
-    private String telefono; 
-    private Ciudad ciudad; 
-    private String email; 
+    
+    private PersonalInfo personalInfo;
     // constructor
 
     public Persona(String nombre, String direccion, String telefono, Ciudad ciudad, String email) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.ciudad = ciudad;
-        this.email = email;
+        this.personalInfo = new PersonalInfo(nombre, direccion, telefono, ciudad, email);
     }
 
     // Método to string que muestra la información del objeto de la clase persona
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", ciudad=" + ciudad.toString() + ", email=" + email + '}';
-    }
-// getters y setters
-    public String getNombre() {
-        return nombre;
+        return "Persona{" + personalInfo.toString() + '}';
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public PersonalInfo getPersonalInfo() {
+        return personalInfo;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public void setPersonalInfo(PersonalInfo personalInfo) {
+        this.personalInfo = personalInfo;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public Ciudad getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
     
 }
